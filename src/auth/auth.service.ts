@@ -1,9 +1,12 @@
 import { Injectable } from '@nestjs/common';
+import { Sequelize } from 'sequelize-typescript';
 
-@Injectable({})
+@Injectable()
 export class AuthService {
-  signup() {
-    return { msg: 'Hello, I have signup' };
+  constructor(private sequelize: Sequelize) {}
+
+  getUsers() {
+    return { id: 23424, name: 'Oleg' };
   }
 
   signin() {
