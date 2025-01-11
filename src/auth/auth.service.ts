@@ -1,15 +1,16 @@
 import { Injectable } from '@nestjs/common';
-import { Sequelize } from 'sequelize-typescript';
+import { JwtService } from '@nestjs/jwt';
+import { CreteUserDto } from 'src/users/dto/create-user.dto';
+import { UsersService } from 'src/users/users.service';
 
 @Injectable()
 export class AuthService {
-  constructor(private sequelize: Sequelize) {}
+  constructor(
+    private userService: UsersService,
+    private jwtService: JwtService,
+  ) {}
 
-  getUsers() {
-    return { id: 23424, name: 'Oleg' };
-  }
+  async login(userDto: CreteUserDto) {}
 
-  signin() {
-    return { msg: 'Hello, I have signin' };
-  }
+  async registration(userDto: CreteUserDto) {}
 }

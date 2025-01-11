@@ -1,21 +1,19 @@
 import { Module } from '@nestjs/common';
 import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
-import { SequelizeModule } from '@nestjs/sequelize';
+import { UsersModule } from 'src/users/users.module';
+import { JwtModule } from '@nestjs/jwt';
 
 @Module({
   controllers: [AuthController],
   providers: [AuthService],
   imports: [
-    SequelizeModule.forRoot({
-      dialect: 'postgres',
-      host: 'localhost',
-      port: 5432,
-      username: 'postgres', // или другой существующий пользователь
-      password: 'root', // пароль для роли
-      database: 'nest-course',
-      autoLoadModels: true,
-      synchronize: true,
+    UsersModule,
+    JwtModule.register({
+      secret: process.env.PRIVATE_KEY || 'SECRET',
+      signOptions: {
+        expiresIn: '24h',
+      },
     }),
   ],
 })

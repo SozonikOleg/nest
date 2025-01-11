@@ -1,19 +1,19 @@
+import { ApiTags } from '@nestjs/swagger';
+import { Body, Controller, Post } from '@nestjs/common';
+import { CreteUserDto } from 'src/users/dto/create-user.dto';
 import { AuthService } from './auth.service';
-import { Controller, Post } from '@nestjs/common';
-import { Get } from '@nestjs/common';
-
+@ApiTags('Авторизация')
 @Controller('/auth')
 export class AuthController {
-  // Добавляем зависимлсть
-  constructor(private AuthService: AuthService) {}
+  constructor(private authService: AuthService) {}
 
-  @Get('/sighup')
-  signup() {
-    return this.AuthService.getUsers();
+  @Post('/login')
+  login(@Body() userDto: CreteUserDto) {
+    return this.authService.login(userDto);
   }
 
-  @Get('/sign')
-  signin() {
-    return this.AuthService.signin();
+  @Post('/registration')
+  registration(@Body() userDto: CreteUserDto) {
+    return this.authService.registration(userDto);
   }
 }
