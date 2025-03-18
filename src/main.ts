@@ -17,7 +17,6 @@ async function bootstrap() {
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
-  app.useGlobalGuards(JwtAutGuard);
 
   SwaggerModule.setup('/app/docs', app, document);
 

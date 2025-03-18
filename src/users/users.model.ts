@@ -51,7 +51,7 @@ export class User extends Model<User, UserCreationAttrs> {
     type: DataType.STRING,
     allowNull: true,
   })
-  banReason: boolean;
+  banReason: string;
 
   @BelongsToMany(() => Role, () => UserRoles)
   roles: Role[];

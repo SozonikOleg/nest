@@ -25,11 +25,11 @@ import { Role } from './roles/roles.model';
   imports: [
     SequelizeModule.forRoot({
       dialect: 'postgres',
-      host: 'localhost',
+      host: 'postgres',
       port: 5432,
       username: 'postgres', // или другой существующий пользователь
-      password: 'root', // пароль для роли
-      database: 'nest-course',
+      password: '123', // пароль для роли
+      database: 'nest',
       models: [User, UserRoles, Role],
       autoLoadModels: true,
       synchronize: true,
